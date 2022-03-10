@@ -1,3 +1,0 @@
-public TestClass Main {
-    
-}
