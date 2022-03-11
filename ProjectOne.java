@@ -7,7 +7,7 @@ public class ProjectOne {
         // Get number of p's from args[0]
         int userNumInput = Integer.parseInt(args[0]);
 
-        // Create an array with p1 to pn 
+        // Create an array with p1 to pn to be the table header
         String [] pSequence = new String [userNumInput];
         for(int p = 0; p < userNumInput; p++){
             pSequence[p] = "p" + (p+1);
@@ -15,33 +15,8 @@ public class ProjectOne {
         
         // Generate the truth table
         String [][] myTruthTable = TruthTable.setup(userNumInput);
-
         printTable(pSequence, myTruthTable);
 
-
-
-
-
-
-
-
-        // // Print out the truth table //
-
-
-
-        // int numOfRow = (int) Math.pow(2, names.length);
-
-        // log.print("TruthTable from MAIN");
-        // for(int z = 0 ; z < names.length; z++){
-        //     System.out.print(names[z] + "\t");
-        // }
-        // System.out.println();
-        // for(int m = 0; m < numOfRow; m++){
-        //     for(int n = 0; n < names.length; n++){
-        //         System.out.print(myTruthTable[n][m] + "\t");
-        //     }
-        //     System.out.println();
-        // }
 
 
 
