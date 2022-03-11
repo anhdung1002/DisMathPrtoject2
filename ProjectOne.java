@@ -1,12 +1,19 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 public class ProjectOne {
     static Logger log = new Logger();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
         // Set to 'true' to enable console output for debugging
         boolean debug = true;
         // LogicExec logic = new LogicExec();
 
         // Get number of p's from args[0]
         int userNumInput = Integer.parseInt(args[0]);
+
+        // Create output text file
+        PrintStream outFile = new PrintStream(new File("Output.text"));
 
         // Create an array with p1 to pn to be the table header
         String [] pSequence = new String [userNumInput];
@@ -45,6 +52,9 @@ public class ProjectOne {
             fullHeader[h] = pSequence[h];
         }
         fullHeader[fullHeader.length -1] = "n"; // subtract 1 because of 0 base index
+        if(debug)
+            printTable(fullHeader, fullTable);
+        System.setOut(outFile);
         printTable(fullHeader, fullTable);
 
 
@@ -111,11 +121,7 @@ public class ProjectOne {
         // }
     }
     static void printTable(String [] header, String [][] generatedTable){
-
-
-
         int numOfRow = generatedTable[0].length;
-
         log.print("TruthTable from MAIN");
         // Print out the header
         for(int z = 0 ; z < header.length; z++){
