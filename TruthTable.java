@@ -5,20 +5,7 @@ public class TruthTable {
 
         // Calculate the number of row
         int numOfRow = (int) Math.pow(2, numOfArgs);
-        // Create an array with Pn
-        String [] pSequence = new String [numOfArgs];
-        for(int p = 0; p < numOfArgs; p++){
-            pSequence[p] = "p"+(p+1);
-            log.print(pSequence[p]);
-        }
-
-
-
-
-
-
-
-
+    
         // Create a 2-dimensional matrix
         String [][] myTable = new String [numOfArgs][numOfRow];
 
@@ -43,19 +30,6 @@ public class TruthTable {
                 }
             }
         }
-        // Print out the truth table //
-        // log.print("TruthTable");
-        // for(int z = 0 ; z < numOfPeople; z++){
-        //     System.out.print(vars[z] + "\t");
-        // }
-        // System.out.println();
-        // for(int m = 0; m < numOfRow; m++){
-        //     for(int n = 0; n < numOfPeople; n++){
-        //         System.out.print(myTable[n][m] + "\t");
-        //     }
-        //     System.out.println();
-        // }
-
         return myTable;
     }
     

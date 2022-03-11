@@ -12,29 +12,36 @@ public class ProjectOne {
         for(int p = 0; p < userNumInput; p++){
             pSequence[p] = "p" + (p+1);
         }
-
-        // Modify this string array to change names
-        String [] names = {"Paul", "Quinn", "Ray", "Steve"};
         
-        // Truth table is built with the proposition that everyone is innocent
-        // The first index of myTruthTable corresponds to the first index of the names array
-        // Ex: myTruthTable[0] is the truth values for names[0] aka Paul
-        String [][] myTruthTable = TruthTable.setup(4);
+        // Generate the truth table
+        String [][] myTruthTable = TruthTable.setup(userNumInput);
+
+        printTable(pSequence, myTruthTable);
+
+
+
+
+
+
+
 
         // // Print out the truth table //
-        int numOfRow = (int) Math.pow(2, names.length);
 
-        log.print("TruthTable from MAIN");
-        for(int z = 0 ; z < names.length; z++){
-            System.out.print(names[z] + "\t");
-        }
-        System.out.println();
-        for(int m = 0; m < numOfRow; m++){
-            for(int n = 0; n < names.length; n++){
-                System.out.print(myTruthTable[n][m] + "\t");
-            }
-            System.out.println();
-        }
+
+
+        // int numOfRow = (int) Math.pow(2, names.length);
+
+        // log.print("TruthTable from MAIN");
+        // for(int z = 0 ; z < names.length; z++){
+        //     System.out.print(names[z] + "\t");
+        // }
+        // System.out.println();
+        // for(int m = 0; m < numOfRow; m++){
+        //     for(int n = 0; n < names.length; n++){
+        //         System.out.print(myTruthTable[n][m] + "\t");
+        //     }
+        //     System.out.println();
+        // }
 
 
 
@@ -100,6 +107,27 @@ public class ProjectOne {
         // for(int l = 0; l < numberOfPeople; l++){
         //     printResult(names[l], myTruthTable[l][answerCol]);
         // }
+    }
+    static void printTable(String [] header, String [][] generatedTable){
+
+
+
+        int numOfRow = (int) Math.pow(2, header.length);
+
+        log.print("TruthTable from MAIN");
+        // Print out the header
+        for(int z = 0 ; z < header.length; z++){
+            System.out.print(header[z] + "\t");
+        }
+        System.out.println();
+        // Populate one row at a time
+        // n is the row number, m is column number
+        for(int m = 0; m < numOfRow; m++){
+            for(int n = 0; n < header.length; n++){
+                System.out.print(generatedTable[n][m] + "\t");
+            }
+            System.out.println();
+        }
     }
 
     static void printResult(String name, String truthVal){
