@@ -4,13 +4,49 @@ public class ProjectOne {
 
         // LogicExec logic = new LogicExec();
 
+        // Get number of p's from args[0]
+        int userNumInput = Integer.parseInt(args[0]);
+
+        // Create an array with p1 to pn 
+        String [] pSequence = new String [userNumInput];
+        for(int p = 0; p < userNumInput; p++){
+            pSequence[p] = "p" + (p+1);
+        }
+
         // Modify this string array to change names
-        String [] names = {"Paul", "Quinn", "Ray", "Steve", "Todd","AAA", "BBB", "CCC"};
+        String [] names = {"Paul", "Quinn", "Ray", "Steve"};
         
         // Truth table is built with the proposition that everyone is innocent
         // The first index of myTruthTable corresponds to the first index of the names array
         // Ex: myTruthTable[0] is the truth values for names[0] aka Paul
-        String [][] myTruthTable = TruthTable.setup(names);
+        String [][] myTruthTable = TruthTable.setup(4);
+
+        // // Print out the truth table //
+        int numOfRow = (int) Math.pow(2, names.length);
+
+        log.print("TruthTable from MAIN");
+        for(int z = 0 ; z < names.length; z++){
+            System.out.print(names[z] + "\t");
+        }
+        System.out.println();
+        for(int m = 0; m < numOfRow; m++){
+            for(int n = 0; n < names.length; n++){
+                System.out.print(myTruthTable[n][m] + "\t");
+            }
+            System.out.println();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         // int numberOfPeople = names.length;
         // int numberOfTruthValues = (int)Math.pow(2, numberOfPeople);
         
