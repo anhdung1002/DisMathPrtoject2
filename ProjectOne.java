@@ -1,7 +1,8 @@
 public class ProjectOne {
     static Logger log = new Logger();
     public static void main(String[] args) {
-
+        // Set to 'true' to enable console output for debugging
+        boolean debug = true;
         // LogicExec logic = new LogicExec();
 
         // Get number of p's from args[0]
@@ -15,10 +16,36 @@ public class ProjectOne {
         
         // Generate the truth table
         String [][] myTruthTable = TruthTable.setup(userNumInput);
-        printTable(pSequence, myTruthTable);
+        if(debug)
+            printTable(pSequence, myTruthTable);
 
+        // Add a result column to the truth table
+        // First [] is column, second [] is row
+        int numOfRow = myTruthTable[0].length;
+        int numOfColumn = myTruthTable.length;
+        if(debug)
+            log.print(numOfRow + " x " + numOfColumn);
 
+        // Copy and append a column to myTruthTable
+        String [][] fullTable = new String [numOfColumn + 1] [numOfRow];
+        for(int m = 0; m < numOfRow; m++){
+            for(int n = 0; n < numOfColumn; n++){
+                fullTable[n][m] = myTruthTable[n][m];
+            }
+        }
 
+        // add value for DEVELOPMENT
+        for(int h=0; h<numOfRow; h++){
+            fullTable[numOfColumn][h] = "r" + h;
+        }
+
+        // Append result to the header
+        String [] fullHeader = new String [pSequence.length + 1];
+        for(int h=0; h<pSequence.length; h++){
+            fullHeader[h] = pSequence[h];
+        }
+        fullHeader[fullHeader.length -1] = "n"; // subtract 1 because of 0 base index
+        printTable(fullHeader, fullTable);
 
 
 
@@ -87,7 +114,7 @@ public class ProjectOne {
 
 
 
-        int numOfRow = (int) Math.pow(2, header.length);
+        int numOfRow = generatedTable[0].length;
 
         log.print("TruthTable from MAIN");
         // Print out the header
