@@ -35,101 +35,50 @@ public class ProjectOne {
             log.print(numOfRow + " x " + numOfColumn);
 
         // Copy and append a column to myTruthTable
-        String [][] fullTable = new String [numOfColumn + 1] [numOfRow];
+        String [][] fullTable = new String [numOfColumn + 2] [numOfRow];    //Add 2 columns
         for(int m = 0; m < numOfRow; m++){
             for(int n = 0; n < numOfColumn; n++){
                 fullTable[n][m] = myTruthTable[n][m];
             }
         }
 
-        // DEVELOPMENT TO CALCULATE ENTIRE TRUTH TABLE
-        String[] stm1 = logic.biDirExec(fullTable[0], fullTable[1]);
-
+        // Evaluate the truth table
         String [] tempResult = fullTable[0];
         for(int t=1; t<numOfColumn; t++){
             tempResult = logic.biDirExec(tempResult, fullTable[t]);
         }
+        // Count number of true for each row and add to the main table
+        String [] xCount = new String[numOfRow];
+        for(int r=0; r<numOfRow; r++){
+            int x = 0;
+            for(int c=0; c<numOfColumn; c++){
+                if(fullTable[c][r] == "T"){
+                    x++;
+                }
+            }
+            xCount[r] = String.valueOf(x);
+        }
 
-        // add value for DEVELOPMENT
+        // Add (1) results and x count
         for(int h=0; h<numOfRow; h++){
-            fullTable[numOfColumn][h] = tempResult[h];
+            fullTable[numOfColumn][h] = tempResult[h];  // Add the (1) result to each row
+            fullTable[numOfColumn+1][h] = xCount[h];    // Add x count to each row
         }
 
         // Append result to the header
-        String [] fullHeader = new String [pSequence.length + 1];
+        String [] fullHeader = new String [pSequence.length + 2];
         for(int h=0; h<pSequence.length; h++){
             fullHeader[h] = pSequence[h];
         }
-        fullHeader[fullHeader.length -1] = "n"; // subtract 1 because of 0 base index
+        fullHeader[fullHeader.length - 2] = "Result"; // subtract 1 because of 0 base index
+        fullHeader[fullHeader.length - 1] = "x";
+
         if(debug)
             printTable(fullHeader, fullTable);
         System.setOut(outFile); // Sending below output to file
         printTable(fullHeader, fullTable);
         System.setOut(console); // Set back to send output to console
 
-
-        // String[] stm1 = logic.biDirExec(fullTable[0], fullTable[1]);
-        // resultTable[0] = stm1;
-
-
-
-
-
-
-
-        // int numberOfPeople = names.length;
-        // int numberOfTruthValues = (int)Math.pow(2, numberOfPeople);
-        
-        // // This breaks down the truth table for individual name
-        // // to make it easy to perform the logical operations
-        // String[] p = myTruthTable[0];   //Paul
-        // String[] q = myTruthTable[1];   //Quinn
-        // String[] r = myTruthTable[2];   //Ray
-        // String[] s = myTruthTable[3];   //Steve
-        // String[] t = myTruthTable[4];   //Todd
-
-        // String[][] resultTable = new String[numberOfPeople][numberOfTruthValues];
-        // // Paul says, “Ray is guilty.”
-        // String[] stm1 = logic.biDirExec(p, logic.notExec(r));
-        // resultTable[0] = stm1;
-        // // Quinn says, “If Steve is guilty, then so is Ray.”
-        // String[] stm2 = logic.biDirExec(q,logic.impliExec(logic.notExec(s), logic.notExec(r)));
-        // resultTable[1] = stm2;
-        // // Ray says, “Both Steve and Todd are guilty.”
-        // String[] stm3 = logic.biDirExec(r,logic.andExec(logic.notExec(s), logic.notExec(t)));
-        // resultTable[2] = stm3;
-        // // Steve says, “Both Quinn and Ray are guilty.”
-        // String[] stm4 = logic.biDirExec(s,logic.andExec(logic.notExec(q), logic.notExec(r)));
-        // resultTable[3] = stm4;
-        // // Todd says, “At least one of Paul or Ray is guilty.”
-        // String[] stm5 = logic.biDirExec(t,logic.orExec(logic.notExec(p), logic.notExec(r)));
-        // resultTable[4] = stm5;
-    
-        // Print out the results for debug //
-        // System.out.println();
-        // for(int m = 0; m < numberOfTruthValues; m++){
-        //     for(int n = numberOfPeople - 1; n >= 0; n--){
-        //         System.out.print(resultTable[n][m] + "\t");
-        //     }
-        //     System.out.println();
-        // }
-
-
-        // int answerCol = -1;
-        // for(int i = 0; i < numberOfTruthValues; i++){
-        //     int truthCount = 0;
-        //     for(int j = 0; j < numberOfPeople; j++){
-        //         if(resultTable[j][i] == "T")
-        //             truthCount++;
-        //     }
-        //     if(truthCount == numberOfPeople)
-        //         answerCol = truthCount+1;
-        // }
-        // log.print("Answer is in row: " + answerCol);
-
-        // for(int l = 0; l < numberOfPeople; l++){
-        //     printResult(names[l], myTruthTable[l][answerCol]);
-        // }
     }
     static void printTable(String [] header, String [][] generatedTable){
         int numOfRow = generatedTable[0].length;
