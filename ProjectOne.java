@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -7,14 +8,14 @@ public class ProjectOne {
     public static void main(String[] args) throws FileNotFoundException{
         // Set to 'true' to enable console output for debugging
         boolean debug = true;
-        // LogicExec logic = new LogicExec();
+        LogicExec logic = new LogicExec();
 
         // Get number of p's from args[0]
         int userNumInput = Integer.parseInt(args[0]);
 
         // Create output text file
-        PrintStream outFile = new PrintStream(new File("Output.text"));
-
+        PrintStream outFile = new PrintStream(new File("Output.text")); // Use this to print output to file
+        PrintStream console = System.out;   // Use this to print to console
         // Create an array with p1 to pn to be the table header
         String [] pSequence = new String [userNumInput];
         for(int p = 0; p < userNumInput; p++){
@@ -41,9 +42,17 @@ public class ProjectOne {
             }
         }
 
+        // DEVELOPMENT TO CALCULATE ENTIRE TRUTH TABLE
+        String[] stm1 = logic.biDirExec(fullTable[0], fullTable[1]);
+
+        String [] tempResult = fullTable[0];
+        for(int t=1; t<numOfColumn; t++){
+            tempResult = logic.biDirExec(tempResult, fullTable[t]);
+        }
+
         // add value for DEVELOPMENT
         for(int h=0; h<numOfRow; h++){
-            fullTable[numOfColumn][h] = "r" + h;
+            fullTable[numOfColumn][h] = tempResult[h];
         }
 
         // Append result to the header
@@ -54,11 +63,13 @@ public class ProjectOne {
         fullHeader[fullHeader.length -1] = "n"; // subtract 1 because of 0 base index
         if(debug)
             printTable(fullHeader, fullTable);
-        System.setOut(outFile);
+        System.setOut(outFile); // Sending below output to file
         printTable(fullHeader, fullTable);
+        System.setOut(console); // Set back to send output to console
 
 
-
+        // String[] stm1 = logic.biDirExec(fullTable[0], fullTable[1]);
+        // resultTable[0] = stm1;
 
 
 
@@ -135,15 +146,6 @@ public class ProjectOne {
                 System.out.print(generatedTable[n][m] + "\t");
             }
             System.out.println();
-        }
-    }
-
-    static void printResult(String name, String truthVal){
-        if(truthVal == "T"){
-            System.out.println(name + " is innocent.");
-        }        
-        else if(truthVal == "F"){
-            System.out.println(name + " is guilty");
         }
     }
     
