@@ -1,4 +1,3 @@
-import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -14,7 +13,7 @@ public class ProjectOne {
         int userNumInput = Integer.parseInt(args[0]);
 
         // Create output text file
-        PrintStream outFile = new PrintStream(new File("Output.text")); // Use this to print output to file
+        PrintStream outFile = new PrintStream(new File("Results_with_n_" + userNumInput + ".text")); // Use this to print output to file
         PrintStream console = System.out;   // Use this to print to console
         // Create an array with p1 to pn to be the table header
         String [] pSequence = new String [userNumInput];
@@ -82,7 +81,7 @@ public class ProjectOne {
     }
     static void printTable(String [] header, String [][] generatedTable){
         int numOfRow = generatedTable[0].length;
-        log.print("TruthTable from MAIN");
+        log.print("TruthTable");
         // Print out the header
         for(int z = 0 ; z < header.length; z++){
             System.out.print(header[z] + "\t");
