@@ -75,6 +75,7 @@ public class ProjectTwo {
         if(debug)
             printTable(fullHeader, fullTable);
         System.setOut(outFile); // Sending below output to file
+        log.print("User input value of: " + userNumInput);
         printTable(fullHeader, fullTable);
         System.setOut(console); // Set back to send output to console
 
