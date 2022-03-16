@@ -1,5 +1,5 @@
 public class LogicCal {
-    
+    // Perform the logic NOT operation
     static public String not(String var){
         String rVal="Some inputs entered. Use 'T' or 'F'";
         if(var == "T"){
@@ -10,6 +10,7 @@ public class LogicCal {
         }
         return rVal;
     }
+    // Perform the logic IMPLY operation
     static public String impli(String var1, String var2){
         String rVal="Some inputs entered. Use 'T' or 'F'";
 
@@ -27,7 +28,7 @@ public class LogicCal {
         }
         return rVal;
     }
-
+    // Perform the logic AND operation
     static public String and(String var1, String var2){
         String rVal="Some inputs entered. Use 'T' or 'F'";
 
@@ -45,7 +46,7 @@ public class LogicCal {
         }
         return rVal;
     }
-
+    // Perform the logic OR operation
     static public String or(String var1, String var2){
         String rVal="Some inputs entered. Use 'T' or 'F'";
 
@@ -63,7 +64,7 @@ public class LogicCal {
         }
         return rVal;
     }
-
+    // Perform the logic BI-CONDITIONAL operation
     static public String biDir(String var1, String var2){
         String rVal="Some inputs entered. Use 'T' or 'F'";
 

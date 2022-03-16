@@ -8,12 +8,12 @@ public class LogicExec extends LogicCal{
             size = var1.length;
         }
         else{
-            System.out.print("Input sizes do not match");
+            System.out.print("Input sizes do not match");   // Print out error if input sizes don't match
         }
 
         String[] resultStr = new String [size];
         for(int i = 0; i < size; i++){
-            resultStr[i] = and(var1[i], var2[i]);
+            resultStr[i] = and(var1[i], var2[i]);   // Apply the logic AND operation
         }
         return resultStr;
     }
@@ -25,12 +25,12 @@ public class LogicExec extends LogicCal{
             size = var1.length;
         }
         else{
-            System.out.print("Input sizes do not match");
+            System.out.print("Input sizes do not match");   // Print out error if input sizes don't match
         }
 
         String[] resultStr = new String [size];
         for(int i = 0; i < size; i++){
-            resultStr[i] = or(var1[i], var2[i]);
+            resultStr[i] = or(var1[i], var2[i]);   // Apply the logic OR operation
         }
         return resultStr;
     }
@@ -42,12 +42,12 @@ public class LogicExec extends LogicCal{
             size = var1.length;
         }
         else{
-            System.out.print("Input sizes do not match");
+            System.out.print("Input sizes do not match");   // Print out error if input sizes don't match
         }
 
         String[] resultStr = new String [size];
         for(int i = 0; i < size; i++){
-            resultStr[i] = impli(var1[i], var2[i]);
+            resultStr[i] = impli(var1[i], var2[i]);   // Apply the logic IMPLY operation
         }
         return resultStr;
     }
@@ -59,12 +59,12 @@ public class LogicExec extends LogicCal{
             size = var1.length;
         }
         else{
-            System.out.print("Input sizes do not match");
+            System.out.print("Input sizes do not match");   // Print out error if input sizes don't match
         }
 
         String[] resultStr = new String [size];
         for(int i = 0; i < size; i++){
-            resultStr[i] = biDir(var1[i], var2[i]);
+            resultStr[i] = biDir(var1[i], var2[i]);   // Apply the logic BI-DIRECTIONAL operation
         }
         return resultStr;
     }
@@ -74,7 +74,7 @@ public class LogicExec extends LogicCal{
         int size = var1.length;
         String[] resultStr = new String [size];
         for(int i = 0; i < size; i++){
-            resultStr[i] = not(var1[i]);
+            resultStr[i] = not(var1[i]);   // Apply the logic NOT operation
         }
         return resultStr;
     }

@@ -9,17 +9,16 @@ public class TruthTable {
         // Create a 2-dimensional matrix
         String [][] myTable = new String [numOfArgs][numOfRow];
 
-        // for(int i = numOfPeople -1 ; i >= 0; i--){
-            for(int i = 0 ; i < numOfArgs; i++){
-            int groupSize = (int) Math.pow(2, numOfArgs - 1 -i);
-            int tracker = groupSize;
-            String valToInsert = "T";
-            for(int j = 0; j < numOfRow; j++){
+            for(int i = 0 ; i < numOfArgs; i++){    // Iterate through each column
+            int groupSize = (int) Math.pow(2, numOfArgs - 1 -i);    // Compute group size of T or F to populate in each column
+            int tracker = groupSize;    // Keep track of when to change the value from T to F when populating the truth table
+            String valToInsert = "T";   // Initial value set to T
+            for(int j = 0; j < numOfRow; j++){  // Iterate through each row
                 if(j < tracker){
-                    myTable[i][j] = valToInsert;
+                    myTable[i][j] = valToInsert;    // Insert truth values
                 }
                 else{
-                    if(valToInsert == "T"){
+                    if(valToInsert == "T"){         // Switch true values when tracker variable changes
                         valToInsert = "F";
                     }
                     else{
