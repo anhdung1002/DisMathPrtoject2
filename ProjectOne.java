@@ -6,7 +6,7 @@ public class ProjectOne {
     static Logger log = new Logger();
     public static void main(String[] args) throws FileNotFoundException{
         // Set to 'true' to enable console output for debugging
-        boolean debug = true;
+        boolean debug = false;
         LogicExec logic = new LogicExec();
 
         // Get number of p's from args[0]
