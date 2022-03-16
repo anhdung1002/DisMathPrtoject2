@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-public class ProjectOne {
+public class ProjectTwo {
     static Logger log = new Logger();
     public static void main(String[] args) throws FileNotFoundException{
         // Set to 'true' to enable console output for debugging
